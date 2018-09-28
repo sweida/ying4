@@ -9,16 +9,17 @@
 		<span class="iconfont icon-home" tapmode onclick="showDefault('loading')"></span>
 		<p>首页</p>
 	</a>
-	<!-- {maccms:type ids="5" order="asc" by="sort"}
+	{maccms:type ids="5" order="asc" by="sort"}
 	<a href="{:mac_url_type($vo)}" {if condition="$obj.type_id eq $vo.type_id"}class="active"{/if}>
 		<span class="iconfont icon-copy" tapmode onclick="showDefault('loading')"></span>
-		<p>{$vo.type_name}</p>
+		<p>福利</p>
+		<!-- <p>{$vo.type_name}</p> -->
 	</a>
-	{/maccms:type} -->
-	<a href="{:mac_url('label/top')}" {if condition="$maccms.aid eq 8"}class="active">
+	{/maccms:type}
+	<!-- <a href="{:mac_url('label/top')}" {if condition="$maccms.aid eq top"}class="active"{/if}>
 		<span class="iconfont icon-hot" tapmode onclick="showDefault('loading')"></span>
 		<p>热榜</p>
-	</a>
+	</a> -->
 	<a href="{:mac_url('label/live')}" {if condition="$maccms.aid eq 7"}class="active"{/if}>
 		<span class="iconfont icon-discover" tapmode onclick="showDefault('loading')"></span>
 		<p>直播</p>
@@ -28,4 +29,3 @@
 		<p>会员</p>
 	</a>
 </nav>
-

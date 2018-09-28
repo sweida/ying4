@@ -3,12 +3,15 @@
 			<div class="logo">
 				<font style="float:left;margin-left:5px;font-size:.42rem;margin-top:3px;">{$maccms.site_name}</font>
 			</div>
-			<a class="pull-right btn"  tapmode onclick="openDialog('text')">
+			<!-- <a class="pull-right btn"  tapmode onclick="openDialog('text')">
 		        <span class="iconfont icon-creative"></span>
-		    </a>
+		    </a> -->
 			<a class="pull-right btn" href="{:mac_url('label/top')}" tapmode onclick="showDefault('loading')">
 		        <span class="iconfont icon-hot"></span>
 		   	</a>
+        <a class="pull-right btn" href="{:mac_url('label/news')}" tapmode onclick="showDefault('loading')">
+  		        <span class="iconfont icon-creative"></span>
+  		   	</a>
 		    <a class="pull-right btn" href="javascript:;" onclick="openSearch()">
 		        <span class="iconfont icon-search"></span>
 		    </a>
@@ -36,7 +39,7 @@
 		</a>
 			<div class="sSearchInput" style="margin-left: .8rem;">
 				<form class="search-form" method="post" target="_self" action="{:mac_url('vod/search')}">
-			   		<input class="searchInput" name="wd" type="search" autocomplete="off" placeholder="输入影片片名或演员名称。" >  
+			   		<input class="searchInput" name="wd" type="search" autocomplete="off" placeholder="输入影片片名或演员名称。" >
 		      	</form>
 			</div>
 			<input type="submit"  value="" style="display: none!important;"><a href="javascript:" title="搜索" onClick="$('.search-form').submit();"><span class="cancelInput">搜索</span></a>

@@ -21,7 +21,7 @@
 			<span class="iconfont icon-back"></span>
 		</a>
 			<font style="float: left;margin-left:5px;font-size:.38rem;line-height:.85rem;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;width:3rem;">热播榜</font>
-		<a class="pull-right btn"  tapmode onclick="openDialog('text')">
+		<!-- <a class="pull-right btn"  tapmode onclick="openDialog('text')">
 			<span class="iconfont icon-creative"></span>
 		</a>
 		<a class="pull-right btn" href="{:mac_url('label/top')}" tapmode onclick="showDefault('loading')">
@@ -29,7 +29,14 @@
 		</a>
 		<a class="pull-right btn" href="{:mac_url('label/news')}" tapmode onclick="showDefault('loading')">
 			<span class="iconfont icon-time"></span>
-		</a>
+		</a> -->
+
+    <a class="pull-right btn" href="{:mac_url('label/top')}" tapmode onclick="showDefault('loading')">
+        <span class="iconfont icon-hot"></span>
+    </a>
+    <a class="pull-right btn" href="{:mac_url('label/news')}" tapmode onclick="showDefault('loading')">
+        <span class="iconfont icon-creative"></span>
+    </a>
 	</div>
   </header>{maccms:type ids="1,2,3,4" order="asc" by="sort"}
   <section class="bang-v">
