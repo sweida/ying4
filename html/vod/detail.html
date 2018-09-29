@@ -81,8 +81,9 @@
 			<div class="mod-row">
 				<div class="filmSources" id="playPathlist-1">
 						<ul class="swiper-wrapper clearfix" >
-					{maccms:foreach name="obj.vod_play_list" id="vo"}
-			     	<li  class="swiper-slide {eq name="$key" value="1"}active{/eq}" href="javascript:void(0);">{$vo.player_info.show}</li>{/maccms:foreach}
+							{maccms:foreach name="obj.vod_play_list" id="vo"}
+								 <li  class="swiper-slide {eq name="$key" value="1"}active{/eq}" href="javascript:void(0);">{$vo.player_info.show}</li>
+							{/maccms:foreach}
 						</ul>
 				</div>
 			</div>

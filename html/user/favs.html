@@ -30,11 +30,11 @@
                             <form id="form1" name="form1" method="post">{volist name="list" id="vo"}{if condition="$vo.ulog_mid eq 1"}
                                 <!-- BEGIN row -->
                                 <tr>{if condition="$vo.ulog_mid eq 1"}
-                                    <td><input name="ids[]" type="checkbox" value="{$vo.ulog_id}"><a target="_blank" href="{$vo.data.link}">{$vo.data.name}</a>/{$vo.data.type.type_name}</td>
+                                    <td><input name="ids[]" type="checkbox" value="{$vo.ulog_id}"><a href="{$vo.data.link}">{$vo.data.name}</a>/{$vo.data.type.type_name}</td>
 									{elseif condition="$vo.ulog_mid eq 2"}
-									<td><input name="ids[]" type="checkbox" value="{$vo.ulog_id}"><a target="_blank" href="{$vo.data.link}">{$vo.data.name}</a>/{$vo.data.type.type_name}</td>
+									<td><input name="ids[]" type="checkbox" value="{$vo.ulog_id}"><a href="{$vo.data.link}">{$vo.data.name}</a>/{$vo.data.type.type_name}</td>
 									{elseif condition="$vo.ulog_mid eq 3"}
-									<td><input name="ids[]" type="checkbox" value="{$vo.ulog_id}"><a target="_blank" href="{$vo.data.link}">{$vo.data.name}</a></td>{/if}
+									<td><input name="ids[]" type="checkbox" value="{$vo.ulog_id}"><a href="{$vo.data.link}">{$vo.data.name}</a></td>{/if}
                                 </tr>{/if}{/volist}
                                 <!-- END row -->
                         </table>

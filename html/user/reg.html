@@ -4,13 +4,14 @@
 <meta charset="utf-8" />
 <title>新用户注册 - {$maccms.site_name}</title>
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1,">
+<meta http-equiv="X-UA-Compatible" content="IE=9;IE=8;IE=7;IE=EDGE">
 <meta name="keywords" content="{$maccms.site_keywords}" />
 <meta name="description" content="{$maccms.site_description}" />
 {include file="user/include"}
 </head>
 <body>
     <div class="auth">
-         <div class="logo-auth"><a href="{$maccms.path}" title="{$maccms.site_name}">{$maccms.site_name}</a></div>
+        <div class="logo-auth"><a href="{$maccms.path}" title="{$maccms.site_name}">{$maccms.site_name}</a></div>
         <div class="form-box ">
             <h2 class="tit">新用户注册</h2>
             <div class="form-body ">
@@ -22,19 +23,19 @@
                             <input type="text" name="user_name" class="ipt" minlength="4" placeholder="用户名" />
                         </div>
                         <div class="auipt"><span class="iconfont icon-lock"></span>
-                            <input type="password" id="pass1" name="password" class="ipt" minlength="6" placeholder="密码" />
+                            <input type="password" id="pass1" name="user_pwd" class="ipt" minlength="6" placeholder="密码" />
                         </div>
                         <div class="auipt"><span class="iconfont icon-lock"></span>
                             <input type="password" id="pass2" name="user_pwd2" class="ipt" minlength="6" placeholder="重复密码" />
                         </div>
-                        <div class="auipt"><span class="iconfont icon-mail"></span>
+                        <!-- <div class="auipt"><span class="iconfont icon-mail"></span>
                             <input type="text" name="user_email" class="ipt" placeholder="Email" />
-                        </div>
+                        </div> -->
                         <div class="auipt"><span class="iconfont icon-vipcard"></span>
-                            <div class="v-code"><img id="vcode" src="{:url('verify/index')}" alt="看不清？点击更换" align="absmiddle" class="pull-right" onClick="this.src=this.src+'?'" /></div>
-							<input type="text" name="verify" placeholder="验证码" class="ipt" />
+                            <div class="v-code"><img id="imgvcode" src="{:url('verify/index')}" alt="看不清？点击更换" align="absmiddle" class="pull-right" onClick="this.src=this.src+'?'" /></div>
+							<input type="text" name="verify" placeholder="验证码" class="ipt" id="inputver" />
 						</div>
-                        <input type="button" value="注册" id="btn_submit" class="btn primary regbtn" tapmode onclick="showDefault('loading')"/>
+                        <input type="button" value="注册" id="btn_submit" class="btn primary regbtn" tapmode />
                         <!-- <div class="goRegist">
 							<a  onclick="back();">返回</a>
 						</div> -->
@@ -60,11 +61,13 @@
 		var input = $("#fm").serializeArray();
 		var pass1 = $("#pass1").val();
 		var pass2 = $("#pass2").val();
+		var verify = $('input[name="verify"]').val();
+		// var email = $('input[name="user_email"]').val();
 		var inputName = new Array();
 		inputName['user_name'] = '账号';
 		inputName['user_pwd'] = '密码';
 		inputName['user_pwd2'] = '确认密码';
-		inputName['user_email'] = '邮箱';
+		// inputName['user_email'] = '邮箱';
 		inputName['verify'] = '验证码';
 
 		var is = false;
@@ -84,7 +87,11 @@
 			alert('两次密码不一致');
 			return false;
 		}
-
+		if(verify==''){
+			alert('验证码不能为空');
+			$('input[name="verify"]').focus();
+			return;
+		}
 		$.ajax({
 			url: "{:url('user/reg')}",
 			type: "post",
@@ -93,21 +100,21 @@
 			beforeSend: function () {
 				//开启loading
 				//$(".loading_box").css("display","block");
-				$("#btn_submit").css("background","#fd6a6a").val("loading...");
+				$("#btn_submit").css("background","#fd6a6a").val("提交中...");
 			},
-			success: function (r) {
-				alert(r.msg);
-				if(r.code==1){
-					location.href="{:url('user/login')}";
+			success: function (res) {
+				alert(res.msg);
+				if(res.code==1){
+					window.location.href="{:url('user/login')}";
 				}
 				else{
-					$('#verify_img').click();
+					$('#imgvcode').click();
 				}
 			},
-			complete: function () {
-				//结束loading
-				//$(".loading_box").css("display","none");
-				$("#btn_submit").css("background","#fa4646").val("提交");
+			complete: function() {
+				$('#imgvcode').click();
+				$("#inputver").val("");
+				$("#btn_submit").css("background","#fa6567").val("注册");
 			}
 		});
 	})

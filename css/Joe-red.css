@@ -537,8 +537,8 @@ header .btn .iconfont {
     width:auto!important
 }
 .slider .swiper-pagination-bullets span {
-    width:.3rem;
-    height:.05rem;
+    width:.15rem;
+    height:.08rem;
     background-color:#7b7e85;
     float:left;
     margin:5px 0!important;
@@ -548,6 +548,7 @@ header .btn .iconfont {
 .slider .swiper-pagination-bullets span.swiper-pagination-bullet-active {
     background: linear-gradient(to left, #fa6567 0, #fa8587 100%);
     box-shadow: 0 2px 6px rgba(228, 63, 66, 0.2);
+    width:.3rem;
 }
 /*========================================================================*/
 /*AMQ--Joeleo MT 视频布局
@@ -860,6 +861,7 @@ header .btn .iconfont {
     position:relative;
     width:auto!important;
     margin: 0 0 .2rem .2rem;
+    overflow: hidden;
 }
 .filmSelectNum li a {
     font-size:.3rem;
@@ -872,7 +874,8 @@ header .btn .iconfont {
     border-radius:.08rem;
     font-weight:400;
     color:#333;
-	overflow: Hidden;
+    overflow: Hidden;
+    white-space: nowrap;
     text-overflow: ellipsis
 }
 .filmSelectNum li.active a {

@@ -25,10 +25,10 @@
                         <div class="auipt"><span class="iconfont icon-lock"></span>
                             <input type="password" name="user_pwd" class="ipt" minlength="6" placeholder="密码" />
                         </div>
-						<div class="auipt"><span class="iconfont icon-vipcard"></span>
+						<!-- <div class="auipt"><span class="iconfont icon-vipcard"></span>
                             <div class="v-code"><img id="vcode" src="{:url('verify/index')}" alt="看不清？点击更换" align="absmiddle" class="pull-right" onClick="this.src=this.src+'?'+Math.random()" /></div>
                             <input type="text" name="verify" placeholder="验证码" class="ipt" />
-						</div>
+						</div> -->
 						<input type="button" value="登录" id="btn_submit" class="btn primary regbtn"  tapmode onclick="showDefault('loading')"/>
 						<div class="goRegist">
 							<a href="{:url('user/reg')}" tapmode onclick="showDefault('loading')">注册</a>
@@ -55,7 +55,7 @@
 	$('#btn_submit').click(function(){
 		var user_name = $('input[name="user_name"]').val();
 		var user_pwd = $('input[name="user_pwd"]').val();
-		var verify = $('input[name="verify"]').val();
+		// var verify = $('input[name="verify"]').val();
 
 		if(user_name==''){
 			alert('账号不能为空');
@@ -69,13 +69,13 @@
 			return;
 		}
 
-		if(verify==''){
-			alert('验证码不能为空');
-			$('input[name="verify"]').focus();
-			return;
-		}
+		// if(verify==''){
+		// 	alert('验证码不能为空');
+		// 	$('input[name="verify"]').focus();
+		// 	return;
+		// }
 
-		var data = {user_name:user_name, user_pwd:user_pwd, verify:verify };
+		var data = {user_name:user_name, user_pwd:user_pwd };
 		$.ajax({
 			url: "{:url('user/login')}",
 			type: "post",
@@ -87,13 +87,17 @@
 				$("#btn_submit").css("background","#fd6a6a").val("loading...");
 			},
 			success: function (r) {
+				alert(r.msg)
 				if(r.code==1){
 					location.href="{:url('user/index')}";
 				}
 				else{
 					alert(r.msg);
-					$('#verify_img').click();
+					// $('#verify_img').click();
 				}
+			},
+			error :function(r) {
+				alert(r.msg)
 			},
 			complete: function () {
 				//结束loading
